@@ -26,6 +26,8 @@ public class EmployeeJunit {
     @Resource
     private DocumentService<EmployeeDocument> documentService;
 
+
+
     /**
      * 添加
      */
@@ -35,6 +37,8 @@ public class EmployeeJunit {
         EmployeeDocument employeeDocumentSave = documentService.save(employeeDocument);
         System.out.println(employeeDocumentSave);
     }
+
+
 
     /**
      * 删除
@@ -48,6 +52,18 @@ public class EmployeeJunit {
         System.out.println(employeeDocumentList);
     }
 
+    /**
+     * 修改
+     */
+    @Test
+    public void update(){
+        EmployeeDocument employeeDocument = EmployeeDocument.builder().name("jack").age(10).build();
+        Criteria criteria = Criteria.where("name");
+        criteria.is("xiaohua");
+        List<Criteria> criteriaList = Arrays.asList(criteria);
+        Long update = documentService.update(criteriaList, employeeDocument);
+        System.out.println(update);
+    }
 
 
 

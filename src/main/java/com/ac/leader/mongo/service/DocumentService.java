@@ -17,7 +17,7 @@ public interface DocumentService<T> {
     T save (T t);
 
     /**
-     * 多条件查询s
+     * 多条件查询
      */
     List<T> queryList(List<Criteria> criterias,Class<T> tClass);
 
@@ -25,4 +25,9 @@ public interface DocumentService<T> {
      * 条件删除
      */
     List<T> delete(List<Criteria> criterias, Class<T> aClass);
+
+    /**
+     * 条件修改
+     */
+    Long update(List<Criteria> criterias, T t);
 }
