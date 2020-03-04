@@ -1,6 +1,10 @@
-# 服务端口
-server:
+server: # 服务端口配置
   port: 9999
   servlet:
     context-path: /api
 
+spring:
+  data:
+    mongodb: #mongodb配置
+      database: test
+      uri: mongodb://localhost:20001,localhost:20002,localhost:20003/test?replicaSet=rs0
