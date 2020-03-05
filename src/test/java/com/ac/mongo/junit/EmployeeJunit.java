@@ -30,7 +30,7 @@ public class EmployeeJunit {
      */
     @Test
     public void save(){
-        EmployeeDocument employeeDocument = EmployeeDocument.builder().name("jack").age(10).build();
+        EmployeeDocument employeeDocument = EmployeeDocument.builder().name("bye mongo").age(99).build();
         EmployeeDocument employeeDocumentSave = employeeService.save(employeeDocument);
         System.out.println(employeeDocumentSave);
     }

@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /** mongo集群分片配置
  * @author anchao
@@ -17,7 +16,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  */
 @Slf4j
 @Configuration
-@EnableMongoRepositories(basePackages = "com.ac.mongo.dao")
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
     @Value("${spring.data.mongodb.database}")
