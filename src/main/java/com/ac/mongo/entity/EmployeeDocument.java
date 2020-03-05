@@ -1,4 +1,4 @@
-package com.ac.leader.mongo.entity;
+package com.ac.mongo.entity;
 
 import lombok.Builder;
 import lombok.Data;

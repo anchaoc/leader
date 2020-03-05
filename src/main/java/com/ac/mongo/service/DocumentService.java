@@ -1,4 +1,4 @@
-package com.ac.leader.mongo.service;
+package com.ac.mongo.service;
 
 import org.springframework.data.mongodb.core.query.Criteria;
 

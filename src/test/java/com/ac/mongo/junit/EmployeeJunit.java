@@ -1,15 +1,13 @@
-package com.ac.leader.mongo.junit;
+package com.ac.mongo.junit;
 
-import com.ac.leader.LeaderApplication;
-import com.ac.leader.mongo.entity.EmployeeDocument;
-import com.ac.leader.mongo.service.DocumentService;
+import com.ac.LeaderApplication;
+import com.ac.mongo.entity.EmployeeDocument;
+import com.ac.mongo.service.DocumentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Arrays;

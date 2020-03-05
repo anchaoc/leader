@@ -1,0 +1,1 @@
+#uri: mongodb://localhost:20001,localhost:20002,localhost:20003/test?replicaSet=rs0

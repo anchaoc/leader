@@ -1,6 +1,6 @@
-package com.ac.leader.mongo.dao;
+package com.ac.mongo.dao;
 
-import com.ac.leader.mongo.entity.EmployeeDocument;
+import com.ac.mongo.entity.EmployeeDocument;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**

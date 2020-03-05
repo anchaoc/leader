@@ -1,4 +1,4 @@
-package com.ac.leader.mongo.config;
+package com.ac.mongo.config;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -17,14 +17,17 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  */
 @Slf4j
 @Configuration
-@EnableMongoRepositories(basePackages = "com.ac.leader.mongo.dao")
+@EnableMongoRepositories(basePackages = "com.ac.mongo.dao")
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
     @Value("${spring.data.mongodb.database}")
     private String database;
 
-    @Value("${spring.data.mongodb.uri}")
-    private String uri;
+    @Value("${spring.data.mongodb.host}")
+    private String host;
+
+    @Value("${spring.data.mongodb.port}")
+    private String port;
 
     /**
      * mongodb 事务管理
@@ -48,6 +51,6 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
      */
     @Override
     public MongoClient mongoClient() {
-        return MongoClients.create(uri);
+        return MongoClients.create("mongodb://"+host+":"+port);
     }
 }
