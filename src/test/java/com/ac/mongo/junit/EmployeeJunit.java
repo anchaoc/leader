@@ -2,7 +2,7 @@ package com.ac.mongo.junit;
 
 import com.ac.LeaderApplication;
 import com.ac.mongo.entity.EmployeeDocument;
-import com.ac.mongo.service.DocumentService;
+import com.ac.mongo.service.EmployeeService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,8 +22,7 @@ import java.util.List;
 public class EmployeeJunit {
 
     @Resource
-    private DocumentService<EmployeeDocument> documentService;
-
+    private EmployeeService employeeService;
 
 
     /**
@@ -32,7 +31,7 @@ public class EmployeeJunit {
     @Test
     public void save(){
         EmployeeDocument employeeDocument = EmployeeDocument.builder().name("jack").age(10).build();
-        EmployeeDocument employeeDocumentSave = documentService.save(employeeDocument);
+        EmployeeDocument employeeDocumentSave = employeeService.save(employeeDocument);
         System.out.println(employeeDocumentSave);
     }
 
@@ -46,7 +45,7 @@ public class EmployeeJunit {
         Criteria criteria = Criteria.where("name");
         criteria.in("anchao", "world");
         List<Criteria> criteriaList = Arrays.asList(criteria);
-        List<EmployeeDocument> employeeDocumentList = documentService.delete(criteriaList, EmployeeDocument.class);
+        List<EmployeeDocument> employeeDocumentList = employeeService.delete(criteriaList, EmployeeDocument.class);
         System.out.println(employeeDocumentList);
     }
 
@@ -59,7 +58,7 @@ public class EmployeeJunit {
         Criteria criteria = Criteria.where("name");
         criteria.is("xiaohua");
         List<Criteria> criteriaList = Arrays.asList(criteria);
-        Long update = documentService.update(criteriaList, employeeDocument);
+        Long update = employeeService.update(criteriaList, employeeDocument);
         System.out.println(update);
     }
 
@@ -73,7 +72,7 @@ public class EmployeeJunit {
         EmployeeDocument employeeDocument = EmployeeDocument.builder().name("anchao").age(25).build();
         Criteria criteria = Criteria.byExample(employeeDocument);
         List<Criteria> criteriaList = Arrays.asList(criteria);
-        List<EmployeeDocument> list = documentService.queryList(criteriaList, EmployeeDocument.class);
+        List<EmployeeDocument> list = employeeService.queryList(criteriaList, EmployeeDocument.class);
         System.out.println(list);
 
     }

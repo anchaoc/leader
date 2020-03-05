@@ -23,11 +23,9 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     @Value("${spring.data.mongodb.database}")
     private String database;
 
-    @Value("${spring.data.mongodb.host}")
-    private String host;
+    @Value("${spring.data.mongodb.uri}")
+    private String uri;
 
-    @Value("${spring.data.mongodb.port}")
-    private String port;
 
     /**
      * mongodb 事务管理
@@ -51,6 +49,6 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
      */
     @Override
     public MongoClient mongoClient() {
-        return MongoClients.create("mongodb://"+host+":"+port);
+        return MongoClients.create(uri);
     }
 }
