@@ -1,20 +1,24 @@
 package com.ac.leader.controller;
 
+import com.ac.leader.common.Result;
 import com.ac.leader.entity.Leader;
 import com.ac.leader.service.LeaderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 /**
  * @author anchao
  * @date 2020/3/5 20:31
  */
 @Api(tags = "leader api")
-@Controller
+@RestController
 @RequestMapping("leader")
 public class LeaderController {
 
@@ -33,5 +37,17 @@ public class LeaderController {
         leaderNew.setLeaderAge(24);
         Leader leader = leaderService.save(leaderNew);
         System.out.println(leader);
+    }
+
+    @ApiOperation("list")
+    @GetMapping("list")
+    public Result list(){
+        Mono<List<Leader>> listMono = Mono.fromSupplier(() -> leaderService.list());
+        Result<Object> result = new Result<>();
+        System.out.println("---->");
+        listMono.subscribe(s ->{
+            result.setData(s);
+        });
+        return result;
     }
 }

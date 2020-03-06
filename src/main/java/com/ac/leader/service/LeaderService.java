@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface LeaderService {
 
-    List<Leader> list(Leader leader);
+    List<Leader> list();
 
     Leader save(Leader leaderNew);
 }

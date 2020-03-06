@@ -23,6 +23,12 @@ spring:
   data:
     mongodb:
       database: test
-      uri: mongodb://localhost:20001,localhost:20002,localhost:20003/test?replicaSet=rs0
+      host: localhost
+      port: 20001
 
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    timeout: 3000
 

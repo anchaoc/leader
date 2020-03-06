@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author anchao
@@ -20,13 +21,19 @@ public class LeaderServiceImpl implements LeaderService {
     private LeaderDao leaderDao;
 
     @Override
-    public List<Leader> list(Leader leader) {
+    public List<Leader> list() {
+        try {
+            System.out.println(Thread.currentThread().getName());
+            TimeUnit.SECONDS.sleep(5);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<Leader> all = leaderDao.findAll();
         return all;
     }
 
     @Override
-    @Transactional(value = "transactionManager",rollbackFor = Exception.class)
+    @Transactional(value = "transactionManager", rollbackFor = Exception.class)
     public Leader save(Leader leaderNew) {
         leaderDao.save(leaderNew);
         return leaderNew;
