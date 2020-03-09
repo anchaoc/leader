@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ac</groupId>
-    <artifactId>leader</artifactId>
+    <artifactId>Leader-Example</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>leader</name>
+    <name>Leader-Example</name>
     <description>个人演示工程</description>
 
     <properties>

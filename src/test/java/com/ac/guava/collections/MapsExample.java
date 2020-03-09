@@ -1,13 +1,12 @@
 package com.ac.guava.collections;
 
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.collect.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 
 /**
  * @author anchao
@@ -43,6 +42,18 @@ public class MapsExample {
         System.out.println(map2);
     }
 
-
+    //maps 按范围分割map (按照字母的ASCII排序的)
+    @Test
+    public void testMapRange_subMap(){
+        TreeMap<String, Integer> treeMap = Maps.newTreeMap();
+        treeMap.put("Scala", 1);
+        treeMap.put("Guava", 2);
+        treeMap.put("Java", 3);
+        treeMap.put("Anchao", 4);
+        System.out.println(treeMap);
+        NavigableMap<String, Integer> rangeMap = Maps.subMap(treeMap, Range.closed("Anchao", "Java"));
+        //{Anchao=4, Guava=2, Java=3}
+        System.out.println(rangeMap);
+    }
 
 }

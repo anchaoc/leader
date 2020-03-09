@@ -41,8 +41,6 @@ public class BiMapExample {
         biMap.forcePut("2", "2"); //强制put
         //{2=2}
         System.out.println(biMap);
-
-
     }
 
 
