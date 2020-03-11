@@ -10,14 +10,31 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SimpleListener {
 
+    /**
+     * 默认按照方法名称 ASCII值倒序执行
+     *
+     */
+
 
 
     @Subscribe
-    public void doAction(final String event){
+    public void a(final String event){
         if(log.isInfoEnabled()){
-            log.info("Received event[{}] and will take action by DoAction()",event);
+            log.info("Received event[{}] and will take action by DoActiona()",event);
         }
     }
+
+
+
+    @Subscribe
+    public void b(final String event){
+        if(log.isInfoEnabled()){
+            log.info("Received event[{}] and will take action by DoActionb()",event);
+        }
+    }
+
+
+
 
 
 

@@ -1,7 +1,9 @@
 package com.ac.guava.eventbus;
 
 import com.ac.guava.eventbus.listeners.MultipleEventListenters;
-import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.AsyncEventBus;
+
+import java.util.concurrent.Executors;
 
 /** 事件发送
  * @author anchao
@@ -10,8 +12,8 @@ import com.google.common.eventbus.EventBus;
 public class MultipleEventBusExample {
 
     public static void main(String[] args) {
-
-        final EventBus eventBus = new EventBus();
+        //异步
+        final AsyncEventBus eventBus = new AsyncEventBus(Executors.newFixedThreadPool(100));
         eventBus.register(new MultipleEventListenters());
 
         System.out.println("post the String event ...");
