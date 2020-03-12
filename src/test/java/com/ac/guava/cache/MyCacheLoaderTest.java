@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-/**
+/** 自定义 list 缓存
  * @author anchao
  * @date 2020/3/10 21:34
  */
 @RestController
-public class CacheLoaderTest {
+public class MyCacheLoaderTest {
 
 
     @RequestMapping("cache")
@@ -23,7 +23,7 @@ public class CacheLoaderTest {
     }
 
     private List<String> testThreadLocal() {
-        CacheLoaderTest.MyThreadLocal myThreadLocal = new CacheLoaderTest.MyThreadLocal();
+        MyCacheLoaderTest.MyThreadLocal myThreadLocal = new MyCacheLoaderTest.MyThreadLocal();
         myThreadLocal.set(UUID.randomUUID().toString());
         return myThreadLocal.get();
     }

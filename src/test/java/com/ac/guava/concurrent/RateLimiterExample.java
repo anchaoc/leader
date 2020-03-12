@@ -15,7 +15,7 @@ public class RateLimiterExample {
 
     //只允许 1秒处理0.5 也就是2秒处理1次  (速率限制)
     private final static RateLimiter limiter = RateLimiter.create(0.5);
-    //同一时刻 最多3个线程操作
+    //同一时刻 最多3个线程操作 (信号)
     private final static Semaphore semaphore = new Semaphore(3);
 
 
