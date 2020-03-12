@@ -34,7 +34,7 @@ public class JoinerTest extends GuavaBaseTest {
 
     private final String targetFileName ="D:\\qrcode\\guava-joiner.txt";
     private final String targetFileNameTomap ="D:\\qrcode\\guava-joiner-map.txt";
-
+    //不可变map
     private final Map<String,String> stringMap = ImmutableMap.of("Hello","Guava","Java","Scala");
 
 
@@ -66,7 +66,7 @@ public class JoinerTest extends GuavaBaseTest {
     //拼接到StringBuilder中
     @Test
     public void testJoin_On_Append_To_StringBuilder(){
-        // TODO 返回的实例与放入的实例是一个
+        // TODO 注意返回的实例与放入的实例是一个
         StringBuilder stringBuilder1 = Joiner.on("#").useForNull("DEFAULT")
                 .appendTo(new StringBuilder(), stringListWithNullValue);
         System.out.println(print+stringBuilder1.toString());
