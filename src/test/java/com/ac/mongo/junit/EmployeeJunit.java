@@ -6,6 +6,7 @@ import com.ac.mongo.service.EmployeeService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -23,6 +24,8 @@ public class EmployeeJunit {
 
     @Resource
     private EmployeeService employeeService;
+    @Resource
+    private MongoTemplate mongoTemplate;
 
 
     /**
@@ -30,7 +33,7 @@ public class EmployeeJunit {
      */
     @Test
     public void save(){
-        EmployeeDocument employeeDocument = EmployeeDocument.builder().name("bye mongo").age(99).build();
+        EmployeeDocument employeeDocument = EmployeeDocument.builder().name("anchao").age(25).build();
         EmployeeDocument employeeDocumentSave = employeeService.save(employeeDocument);
         System.out.println(employeeDocumentSave);
     }
@@ -78,6 +81,31 @@ public class EmployeeJunit {
     }
 
 
+
+    //综合条件查询 分组 去重 排序 ...
+    @Test
+    public void specialQuery(){
+//        MatchOperation matchOperation= Aggregation.match(criteria);
+//        SortOperation sortOperation = Aggregation.sort(Sort.by("age").descending());
+//        List<AggregationOperation> aggregationOperations = Arrays.asList(matchOperation, sortOperation);
+//        Aggregation aggregation = Aggregation.newAggregation(aggregationOperations);
+//        AggregationResults<EmployeeDocument> aggregate = mongoTemplate.aggregate(aggregation,"employee", EmployeeDocument.class);
+      //  EmployeeDocument employeeDocument = EmployeeDocument.builder().name("anchao").age(25).build();
+        //Criteria criteria = Criteria.where("name");
+       // criteria.in("anchao");
+       // Query query = new Query(criteria);
+        //List<EmployeeDocument> mapList = mongoTemplate.findDistinct(query, "age", "employee", EmployeeDocument.class);
+
+//        DistinctIterable<Integer> distinct = mongoTemplate.getCollection("employee").distinct("age", Integer.class);
+//        MongoCursor<Integer> iterator = distinct.iterator();
+//        Integer next = iterator.next();
+//        System.out.println(next);
+
+//
+//        DistinctIterable<String> distinct = mongoTemplate.getCollection("employee").distinct("name", String.class);
+//        ArrayList<String> into = distinct.into(Lists.newArrayList());
+//        System.out.println(into);
+    }
 
 
 
