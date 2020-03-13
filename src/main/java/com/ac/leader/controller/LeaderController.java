@@ -44,7 +44,6 @@ public class LeaderController {
     public Result list(){
         Mono<List<Leader>> listMono = Mono.fromSupplier(() -> leaderService.list());
         Result<Object> result = new Result<>();
-        System.out.println("---->");
         listMono.subscribe(s ->{
             result.setData(s);
         });

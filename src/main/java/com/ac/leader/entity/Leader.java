@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * @author anchao
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Table(name = "tb_leader")
 @Data
 @NoArgsConstructor
-public class Leader{
+public class Leader implements Serializable {
 
 
     @Id
