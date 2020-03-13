@@ -105,6 +105,13 @@ public class EmployeeJunit {
 //        DistinctIterable<String> distinct = mongoTemplate.getCollection("employee").distinct("name", String.class);
 //        ArrayList<String> into = distinct.into(Lists.newArrayList());
 //        System.out.println(into);
+//        MongoClient mongoClient = new MongoClient("127.0.0.1",20001);
+//        MongoDatabase test = mongoClient.getDatabase("test");
+//        MongoCollection<Document> employee = test.getCollection("employee");
+//        FindIterable<Document> documents = employee.find();
+//        ArrayList<Document> into = documents.into(Lists.newArrayList());
+//        System.out.println(into);
+//       mongoClient.close();
     }
 
 
