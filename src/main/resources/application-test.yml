@@ -1,5 +1,5 @@
 server: # 服务端口配置
-  port: 8080
+  port: 8888
   servlet:
     context-path: /api
 
@@ -12,18 +12,11 @@ spring:
     hikari:
       connection-timeout: 2000
 
-  jpa:
-    database: MYSQL
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-
   data:
     mongodb:
       database: test
-      # 集群分片配置
-      uri: mongodb://localhost:20001,localhost:20002,localhost:20003/test?replicaSet=rs0
+      host: localhost
+      port: 20001
 
   redis:
     database: 0
@@ -34,14 +27,31 @@ spring:
 
 
 
+#持久层 mybatis-springboot
+mybatis-plus:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  #mybatis-plus.typeEnumsPackage=com.baomidou.springboot.entity.enums
+  global-config:
+    db-config:
+      # 主键类型
+      id-type: auto
+      # 字段验证策略
+      field-strategy: NOT_NULL
+      # 逻辑删除配置
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+  type-aliases-package: com.ac.leader.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 
-
-
-
-
-
-
+# pagehelper分页
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
 
 
 
