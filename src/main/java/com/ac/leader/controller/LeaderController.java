@@ -3,6 +3,7 @@ package com.ac.leader.controller;
 import com.ac.leader.common.Result;
 import com.ac.leader.entity.Leader;
 import com.ac.leader.service.LeaderService;
+import com.ac.leader.vo.LeaderVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,8 @@ public class LeaderController {
 
     @ApiOperation("list")
     @GetMapping("list")
-    public Result list(Leader leader){
-        Mono<List<Leader>> listMono = Mono.fromSupplier(() -> leaderService.list(leader));
+    public Result list(LeaderVO leaderVo){
+        Mono<List<Leader>> listMono = Mono.fromSupplier(() -> leaderService.list(leaderVo));
         Result<Object> result = new Result<>();
         listMono.subscribe(s ->{
             result.setData(s);

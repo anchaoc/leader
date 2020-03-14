@@ -2,8 +2,8 @@ package com.ac.leader.service.impl;
 
 import com.ac.leader.dao.LeaderDao;
 import com.ac.leader.entity.Leader;
-import com.ac.leader.monitor.LogPrint;
 import com.ac.leader.service.LeaderService;
+import com.ac.leader.vo.LeaderVO;
 import com.ac.redis.constant.RedisCacheConstant;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -29,15 +29,14 @@ public class LeaderServiceImpl extends ServiceImpl<LeaderDao,Leader>  implements
     @Resource
     private LeaderDao leaderDao;
 
-    @LogPrint
     @Override
-    @Cacheable(cacheNames= RedisCacheConstant.LEADER_CACHE_NAME,key = "#root.target.getFormatKey(#leader)",unless = "#result==null || #result.size()==0")
-    public List<Leader> list(Leader leader) {
+    @Cacheable(cacheNames= RedisCacheConstant.LEADER_CACHE_NAME,key = "#root.target.getFormatKey(#leadervo)",unless = "#result==null || #result.size()==0")
+    public List<Leader> list(LeaderVO leadervo) {
         LambdaQueryWrapper<Leader> leaderQuery = Wrappers.lambdaQuery();
-        leaderQuery.eq(!paramIsNull(leader.getLeaderAddress()),Leader::getLeaderAddress,leader.getLeaderAddress());
-        leaderQuery.eq(!paramIsNull(leader.getLeaderLevel()),Leader::getLeaderLevel,leader.getLeaderLevel());
-        leaderQuery.eq(!paramIsNull(leader.getLeaderAge()),Leader::getLeaderAge,leader.getLeaderAge());
-        leaderQuery.eq(!paramIsNull(leader.getLeaderName()),Leader::getLeaderName,leader.getLeaderName());
+        leaderQuery.eq(!paramIsNull(leadervo.getLeaderAddress()),Leader::getLeaderAddress,leadervo.getLeaderAddress());
+        leaderQuery.eq(!paramIsNull(leadervo.getLeaderLevel()),Leader::getLeaderLevel,leadervo.getLeaderLevel());
+        leaderQuery.eq(!paramIsNull(leadervo.getLeaderAge()),Leader::getLeaderAge,leadervo.getLeaderAge());
+        leaderQuery.eq(!paramIsNull(leadervo.getLeaderName()),Leader::getLeaderName,leadervo.getLeaderName());
         List<Leader> all = leaderDao.selectList(leaderQuery);
         return all;
     }
@@ -61,14 +60,14 @@ public class LeaderServiceImpl extends ServiceImpl<LeaderDao,Leader>  implements
     /**
      * redis 缓存key
      */
-    public String getFormatKey(Leader leader){
+    public String getFormatKey(LeaderVO leadervo){
         StringBuilder stringBuilder = new StringBuilder();
-        Field[] fields = leader.getClass().getDeclaredFields();
+        Field[] fields = leadervo.getClass().getDeclaredFields();
         try {
             for (int i = 0; i < fields.length; i++) {
                 String name = CaseFormat.LOWER_CAMEL.to(CaseFormat.UPPER_CAMEL, fields[i].getName());
-                Method method = leader.getClass().getMethod("get" +name);
-                Object result = method.invoke(leader);
+                Method method = leadervo.getClass().getMethod("get" +name);
+                Object result = method.invoke(leadervo);
                 stringBuilder = (result == null || org.springframework.util.StringUtils.isEmpty(result))
                         ? stringBuilder.append(StringUtils.EMPTY) : stringBuilder.append("leader."+fields[i].getName()+"."+result);
             }
