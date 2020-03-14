@@ -13,7 +13,6 @@ public final class RedisCacheConstant {
      * leader模块相关缓存
      */
     public static final String LEADER_CACHE_NAME ="leader";
-    public static final String LEADER_KEY ="list";
 
 
 
