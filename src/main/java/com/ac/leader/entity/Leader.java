@@ -1,42 +1,78 @@
 package com.ac.leader.entity;
 
-import lombok.Data;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * @author anchao
  * @date 2020/3/5 17:16
  */
-@Entity
-@Table(name = "tb_leader")
-@Data
+@TableName("tb_leader")
 @NoArgsConstructor
 public class Leader implements Serializable {
 
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "id")
+    @TableField
     private Long id ;
 
-    @Column(columnDefinition="varchar(500) comment '领导姓名'")
     private String leaderName;
 
-    @Column(columnDefinition="int(3) comment '领导年龄'")
     private Integer leaderAge;
 
-    @Column(columnDefinition="int(1) default 1 not null comment '领导性别'")
     private Integer leaderSex =1;
 
-    @Column(columnDefinition="varchar(500) comment '领导住址'")
     private String leaderAddress;
 
-    @Column(columnDefinition="int(2) default 1 not null comment '领导等级'")
     private Integer leaderLevel =1;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getLeaderName() {
+        return leaderName;
+    }
+
+    public void setLeaderName(String leaderName) {
+        this.leaderName = leaderName;
+    }
+
+    public Integer getLeaderAge() {
+        return leaderAge;
+    }
+
+    public void setLeaderAge(Integer leaderAge) {
+        this.leaderAge = leaderAge;
+    }
+
+    public Integer getLeaderSex() {
+        return leaderSex;
+    }
+
+    public void setLeaderSex(Integer leaderSex) {
+        this.leaderSex = leaderSex;
+    }
+
+    public String getLeaderAddress() {
+        return leaderAddress;
+    }
+
+    public void setLeaderAddress(String leaderAddress) {
+        this.leaderAddress = leaderAddress;
+    }
+
+    public Integer getLeaderLevel() {
+        return leaderLevel;
+    }
+
+    public void setLeaderLevel(Integer leaderLevel) {
+        this.leaderLevel = leaderLevel;
+    }
 }

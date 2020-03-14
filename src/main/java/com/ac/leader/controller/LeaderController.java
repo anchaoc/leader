@@ -35,14 +35,14 @@ public class LeaderController {
         leaderNew.setLeaderName("xiaoming");
         leaderNew.setLeaderAddress("北京昌平");
         leaderNew.setLeaderAge(24);
-        Leader leader = leaderService.save(leaderNew);
+        Leader leader = leaderService.ins(leaderNew);
         System.out.println(leader);
     }
 
     @ApiOperation("list")
     @GetMapping("list")
-    public Result list(){
-        Mono<List<Leader>> listMono = Mono.fromSupplier(() -> leaderService.list());
+    public Result list(Leader leader){
+        Mono<List<Leader>> listMono = Mono.fromSupplier(() -> leaderService.list(leader));
         Result<Object> result = new Result<>();
         listMono.subscribe(s ->{
             result.setData(s);

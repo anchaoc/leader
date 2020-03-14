@@ -5,7 +5,7 @@ spring5 reactor演示
 
 mongodb4.0 mysql8.0 redis
 
-spring-data-jpa
+mybatis plus 3.1.2
 
 guava工具类库演示
 
