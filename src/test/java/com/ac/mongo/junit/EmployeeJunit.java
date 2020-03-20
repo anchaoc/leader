@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -80,6 +81,22 @@ public class EmployeeJunit {
 
     }
 
+    /**
+     * 去重条件查询
+     */
+    @Test
+    public void queryMany(){
+        Criteria criteria = new Criteria();
+        Criteria age1 = Criteria.where("age").gt(24);
+        Criteria age2 = Criteria.where("age").lte(25);
+        criteria.andOperator(age1,age2);
+        Query query = new Query(criteria);
+       // List<Map> mapList = mongoTemplate.find(query, Map.class, "employee");
+        List<String> mapList2 = mongoTemplate.findDistinct(query, "name","employee", String.class);
+        //System.out.println(mapList);
+        System.out.println(mapList2);
+
+    }
 
 
     //综合条件查询 分组 去重 排序 ...

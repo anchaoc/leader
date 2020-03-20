@@ -64,7 +64,7 @@ public class MainTest {
 
         List<Map<String, Object>> finallyList = byLambda(list1, list2);
 
-        System.out.println(finallyList.stream().skip((page - 1) * size).limit(10000).collect(Collectors.toList()));
+        System.out.println(finallyList.stream().skip((page - 1) * size).limit(100000).collect(Collectors.toList()));
         long end = System.currentTimeMillis();
         System.out.println((end - start));
     }
