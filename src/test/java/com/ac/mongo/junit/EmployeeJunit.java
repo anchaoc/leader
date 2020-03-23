@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Collation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -14,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 /** mongo工具测试
  * @author anchao
@@ -89,8 +91,11 @@ public class EmployeeJunit {
         Criteria criteria = new Criteria();
         Criteria age1 = Criteria.where("age").gt(24);
         Criteria age2 = Criteria.where("age").lte(25);
-        criteria.andOperator(age1,age2);
-        Query query = new Query(criteria);
+        criteria.andOperator(age2,age1);
+        Query query = new Query();
+        query.collation(Collation.of(new Locale("en")).
+                numericOrdering(true));
+        query.addCriteria(criteria);
        // List<Map> mapList = mongoTemplate.find(query, Map.class, "employee");
         List<String> mapList2 = mongoTemplate.findDistinct(query, "name","employee", String.class);
         //System.out.println(mapList);

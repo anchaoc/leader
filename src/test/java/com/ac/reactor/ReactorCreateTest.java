@@ -22,7 +22,7 @@ public class ReactorCreateTest {
     public static void main(String[] args) {
         //createFlux();
         //createMono();
-       //subscribe();
+       subscribe();
 
     }
 
