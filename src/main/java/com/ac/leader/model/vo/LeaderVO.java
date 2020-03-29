@@ -1,4 +1,4 @@
-package com.ac.leader.vo;
+package com.ac.leader.model.vo;
 
 import lombok.NoArgsConstructor;
 

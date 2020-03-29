@@ -3,7 +3,7 @@ package com.ac.leader.controller;
 import com.ac.leader.common.Result;
 import com.ac.leader.entity.Leader;
 import com.ac.leader.service.LeaderService;
-import com.ac.leader.vo.LeaderVO;
+import com.ac.leader.model.vo.LeaderVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

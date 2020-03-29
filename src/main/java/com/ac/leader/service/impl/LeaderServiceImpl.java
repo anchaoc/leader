@@ -3,7 +3,7 @@ package com.ac.leader.service.impl;
 import com.ac.leader.dao.LeaderDao;
 import com.ac.leader.entity.Leader;
 import com.ac.leader.service.LeaderService;
-import com.ac.leader.vo.LeaderVO;
+import com.ac.leader.model.vo.LeaderVO;
 import com.ac.redis.constant.RedisCacheConstant;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
