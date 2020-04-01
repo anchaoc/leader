@@ -19,8 +19,9 @@ import java.util.concurrent.TimeUnit;
 public class ResultListPageThreadTest {
     @Test
     public void pageTest(){
-        long count =500000;
+        long count =80000;
         long fixedNum =computeFixedNum(count);
+        System.out.println("---->固定基数:"+fixedNum);
         long totalPage = (long) Math.ceil((double)count/fixedNum);
         final CountDownLatch downLatch = new CountDownLatch(((int)totalPage));
         ExecutorService executorService = Executors.newFixedThreadPool(((int)totalPage));
@@ -38,20 +39,10 @@ public class ResultListPageThreadTest {
 
     /**
      * 计算固定线程数
+     * 控制在十个线程以内
      */
-    private long computeFixedNum(long count) {
-        if(count<10000) return 1000;
-        else if(count<50000) return 5000;
-        else if(count<100000) return 10000;
-        else if(count<200000) return 20000;
-        else if(count<300000) return 30000;
-        else if(count<400000) return 40000;
-        else if(count<500000) return 50000;
-        else if(count<600000) return 60000;
-        else if(count<700000) return 70000;
-        else if(count<800000) return 80000;
-        else if(count<900000) return 90000;
-        else return 100000;
+    private synchronized long computeFixedNum(long count) {
+        return (long)Math.ceil((double) count / 10);
     }
 
     /**
@@ -79,7 +70,7 @@ public class ResultListPageThreadTest {
      * 计算分页参数
      * 当前页 每页条数 跳过条数
      */
-    private Map<String,Long> computePage(long pageNum, long pageSize) {
+    private synchronized Map<String,Long> computePage(long pageNum, long pageSize) {
         HashMap<String, Long> map = Maps.newHashMap();
         if(pageNum<=0){
             pageNum=1;
