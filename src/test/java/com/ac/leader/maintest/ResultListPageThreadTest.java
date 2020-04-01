@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @author anchao
  * @date 2020/4/1 17:17
  */
-public class ResultListPage {
+public class ResultListPageThreadTest {
     @Test
     public void pageTest(){
         long count =500000;
