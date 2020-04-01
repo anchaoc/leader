@@ -40,11 +40,7 @@ public class ResultListPageThreadTest {
      * 计算固定线程数
      */
     private long computeFixedNum(long count) {
-        if(count<=0){
-            System.err.println("--->数量异常.");
-            return 0;
-        }
-        else if(count<10000) return 1000;
+        if(count<10000) return 1000;
         else if(count<50000) return 5000;
         else if(count<100000) return 10000;
         else if(count<200000) return 20000;
