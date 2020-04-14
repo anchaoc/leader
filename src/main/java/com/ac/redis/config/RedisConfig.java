@@ -1,52 +1,46 @@
 package com.ac.redis.config;
 
-import com.ac.redis.constant.RedisCacheConstant;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.cache.CacheManager;
-import org.springframework.cache.annotation.EnableCaching;
+import org.crazycake.shiro.RedisCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.cache.RedisCacheConfiguration;
-import org.springframework.data.redis.cache.RedisCacheManager;
-import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializationContext;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author anchao
  * @date 2020/3/6 0:27
  */
-@EnableCaching
+//@EnableCaching
 @Configuration
 public class RedisConfig {
 
 
     /**
      * redis替换spring cache
+     * 暂时注掉
+     * shiro用的cacheManager
+     * @see RedisCacheManager
      */
-    @Bean
-    public CacheManager cacheManager(RedisTemplate redisTemplate) {
-        //redis连接
-        RedisCacheWriter redisCacheWriter = RedisCacheWriter.nonLockingRedisCacheWriter(redisTemplate.getConnectionFactory());
-        //redis序列化方式
-        RedisSerializationContext.SerializationPair<Object> serializationPair = RedisSerializationContext.SerializationPair
-                .fromSerializer(getObjectJackson2JsonRedisSerializer());
-        //序列化和过期设置
-        RedisCacheConfiguration cacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
-                .serializeValuesWith(serializationPair);
-        Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>();
-        //指定cacheName前缀
-        redisCacheConfigurationMap.put(RedisCacheConstant.CACHE_NAME_PREFIX, cacheConfiguration);
-
-        return new RedisCacheManager(redisCacheWriter,cacheConfiguration);
-    }
+//    @Bean
+//    public CacheManager cacheManager(RedisTemplate redisTemplate) {
+//        //redis连接
+//        RedisCacheWriter redisCacheWriter = RedisCacheWriter.nonLockingRedisCacheWriter(redisTemplate.getConnectionFactory());
+//        //redis序列化方式
+//        RedisSerializationContext.SerializationPair<Object> serializationPair = RedisSerializationContext.SerializationPair
+//                .fromSerializer(getObjectJackson2JsonRedisSerializer());
+//        //序列化和过期设置
+//        RedisCacheConfiguration cacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
+//                .serializeValuesWith(serializationPair);
+//        Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>();
+//        //指定cacheName前缀
+//        redisCacheConfigurationMap.put(RedisCacheConstant.CACHE_NAME_PREFIX, cacheConfiguration);
+//
+//        return new RedisCacheManager(redisCacheWriter,cacheConfiguration);
+//    }
 
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
