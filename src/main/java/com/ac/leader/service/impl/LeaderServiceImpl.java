@@ -3,7 +3,7 @@ package com.ac.leader.service.impl;
 import com.ac.leader.dao.LeaderDao;
 import com.ac.leader.entity.Leader;
 import com.ac.leader.service.LeaderService;
-import com.ac.leader.model.vo.LeaderVO;
+import com.ac.leader.model.dto.LeaderDTO;
 import com.ac.redis.constant.RedisCacheConstant;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -31,7 +31,7 @@ public class LeaderServiceImpl extends ServiceImpl<LeaderDao,Leader>  implements
 
     @Override
     @Cacheable(cacheNames= RedisCacheConstant.LEADER_CACHE_NAME,key = "#root.target.getFormatKey(#leadervo)",unless = "#result==null || #result.size()==0")
-    public List<Leader> list(LeaderVO leadervo) {
+    public List<Leader> list(LeaderDTO leadervo) {
         LambdaQueryWrapper<Leader> leaderQuery = Wrappers.lambdaQuery();
         leaderQuery.eq(!paramIsNull(leadervo.getLeaderAddress()),Leader::getLeaderAddress,leadervo.getLeaderAddress());
         leaderQuery.eq(!paramIsNull(leadervo.getLeaderLevel()),Leader::getLeaderLevel,leadervo.getLeaderLevel());
@@ -60,7 +60,7 @@ public class LeaderServiceImpl extends ServiceImpl<LeaderDao,Leader>  implements
     /**
      * redis 缓存key
      */
-    public String getFormatKey(LeaderVO leadervo){
+    public String getFormatKey(LeaderDTO leadervo){
         StringBuilder stringBuilder = new StringBuilder();
         Field[] fields = leadervo.getClass().getDeclaredFields();
         try {

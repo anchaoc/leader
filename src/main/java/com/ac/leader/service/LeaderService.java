@@ -1,7 +1,7 @@
 package com.ac.leader.service;
 
 import com.ac.leader.entity.Leader;
-import com.ac.leader.model.vo.LeaderVO;
+import com.ac.leader.model.dto.LeaderDTO;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface LeaderService extends IService<Leader> {
 
-    List<Leader> list(LeaderVO leadervo);
+    List<Leader> list(LeaderDTO leadervo);
 
     Leader ins(Leader leaderNew);
 }
