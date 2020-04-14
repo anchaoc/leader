@@ -24,15 +24,13 @@ public class EasyExcelTest {
      */
     @Test
     public void excelTest() {
-        File file = new File("C:\\Users\\anchao\\Desktop\\中税任务备份\\审计分录任务\\8万行序时账.xlsx");
+        File file = new File("C:\\Users\\anchao\\Desktop\\中税任务备份\\审计分录任务\\导入excel\\20200323提供 模板审计调整分录.xlsx");
         MyExcelListener myExcelListener = new MyExcelListener();
-        EasyExcel.read(file, MyData.class,myExcelListener)
-                .ignoreEmptyRow(true)
+        EasyExcel.read(file, MyData.class, myExcelListener)
                 .sheet(0)
-                .headRowNumber(5)
+                .headRowNumber(4)
                 .doRead();
     }
-
 
 
     /**
@@ -53,14 +51,13 @@ public class EasyExcelTest {
 
         @Override
         public void invoke(MyData data, AnalysisContext context) {
-            log.info("---->data:[{}]",data);
+            log.info("---->data:[{}]", data);
             list.add(data);
             if (list.size() >= BATCH_COUNT) {
                 log.info("---->解析3000条,入库一次");
                 //todo 入库
                 list.clear();
             }
-
         }
 
         @Override
