@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MyData {
     @ExcelProperty(index = 0)
-    private Long num;
-    @ExcelProperty(index = 3)
-    private String index;
+    private String dateTime;
+    @ExcelProperty(index = 1)
+    private String num;
 
 
 }
