@@ -52,8 +52,8 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/swagger-resources/**", "anon");
         filterChainDefinitionMap.put("/v2/**", "anon");
         filterChainDefinitionMap.put("/webjars/**", "anon");
-        //filterChainDefinitionMap.put("/**", "anon");
-        filterChainDefinitionMap.put("/**", "authc");
+        filterChainDefinitionMap.put("/**", "anon");
+        //filterChainDefinitionMap.put("/**", "authc");
         //登录:登录失败后跳转的页面或跳转的接口地址
         shiroFilterFactoryBean.setLoginUrl("/index/index/error");
         //认证不通过跳转到指定的controller
