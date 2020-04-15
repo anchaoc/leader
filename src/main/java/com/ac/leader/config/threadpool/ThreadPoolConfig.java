@@ -27,7 +27,7 @@ public class ThreadPoolConfig {
         //队列满，线程被拒绝执行策略
         executor.setRejectedExecutionHandler(new java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy());
         executor.initialize();
-        log.trace("ThreadPoolTaskExecutor init ok-->");
+        log.info("ThreadPoolTaskExecutor init ok-->");
         return executor;
     }
 

@@ -1,4 +1,4 @@
-package com.ac.leader.common;
+package com.ac.common;
 
 import lombok.Data;
 
@@ -13,7 +13,7 @@ public class Result<T> implements Serializable {
 
     private T data;
 
-    private String msg="成功";
+    private String msg="";
 
     private Integer code =200;
 
@@ -21,14 +21,14 @@ public class Result<T> implements Serializable {
 
 
 
-    public  Result<T> success(T t){
+    public  static <T> Result<T> success(T t){
         Result<T> objectResult = new Result<>();
         objectResult.setData(t);
         return objectResult;
     }
 
 
-    public  Result<T> exception(String msg,Integer code){
+    public  static <T> Result<T> fail(String msg, Integer code){
         Result<T> objectResult = new Result<>();
         objectResult.setCode(code);
         objectResult.setMsg(msg);

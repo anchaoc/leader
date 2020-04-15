@@ -1,9 +1,9 @@
 package com.ac.leader.controller;
 
-import com.ac.leader.common.Result;
+import com.ac.common.Result;
 import com.ac.leader.entity.Leader;
-import com.ac.leader.service.LeaderService;
 import com.ac.leader.model.dto.LeaderDTO;
+import com.ac.leader.service.LeaderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

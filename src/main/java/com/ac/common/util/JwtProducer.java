@@ -1,4 +1,4 @@
-package com.ac.leader.common;
+package com.ac.common.util;
 
 import io.jsonwebtoken.*;
 

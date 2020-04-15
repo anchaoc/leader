@@ -1,5 +1,5 @@
 
-package com.ac;
+package com.ac.leader.config.mybatis;
 
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import com.baomidou.mybatisplus.generator.AutoGenerator;

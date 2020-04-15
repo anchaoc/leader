@@ -2,6 +2,8 @@ server: # 服务端口配置
   port: 9999
   servlet:
     context-path: /api
+#  tomcat:
+#    max-threads: 800
 
 spring:
   datasource:
