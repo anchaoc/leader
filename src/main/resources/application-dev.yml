@@ -14,7 +14,6 @@ spring:
     hikari:
       connection-timeout: 2000
 
-
   data:
     mongodb:
       database: test
@@ -26,6 +25,10 @@ spring:
     host: 127.0.0.1
     port: 6379
     timeout: 3000
+
+
+  thymeleaf:
+    prefix: classpath:/templates/
 
 
 
