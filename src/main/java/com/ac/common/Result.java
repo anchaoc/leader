@@ -1,5 +1,6 @@
 package com.ac.common;
 
+import com.ac.common.exception.ExceptionEnum;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -28,10 +29,10 @@ public class Result<T> implements Serializable {
     }
 
 
-    public  static <T> Result<T> fail(String msg, Integer code){
+    public  static <T> Result<T> fail(ExceptionEnum exceptionEnum){
         Result<T> objectResult = new Result<>();
-        objectResult.setCode(code);
-        objectResult.setMsg(msg);
+        objectResult.setCode(exceptionEnum.getCode());
+        objectResult.setMsg(exceptionEnum.getMsg());
         objectResult.setSuccess(false);
         return objectResult;
     }

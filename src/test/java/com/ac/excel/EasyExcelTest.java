@@ -3,7 +3,9 @@ package com.ac.excel;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
+import com.google.common.primitives.Doubles;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ObjectUtils;
 import org.junit.Test;
 
 import java.io.File;
@@ -20,16 +22,62 @@ public class EasyExcelTest {
 
 
     /**
-     * 异步读取读取测试
+     * 标准异步读取读取测试
      */
     @Test
-    public void excelTest() {
+    public void excelTest1() {
         File file = new File("C:\\Users\\anchao\\Desktop\\中税任务备份\\审计分录任务\\8万行序时账.xlsx");
         MyExcelListener myExcelListener = new MyExcelListener();
         EasyExcel.read(file, MyData.class, myExcelListener)
                 .sheet(0)
                 .headRowNumber(5)
                 .doRead();
+    }
+
+
+    /**
+     * 特殊异步读取读取测试
+     */
+    @Test
+    public void excelTest2(){
+        File file = new File("C:\\Users\\anchao\\Desktop\\中税任务备份\\excel公式\\2020-3-29公式修订后版-工作底稿与申报表及调整汇总等全部链接V8 - 副本.xlsx");
+        ExcelListener myExcelListener = new ExcelListener();
+        EasyExcel.read(file,myExcelListener)
+                .sheet(5)
+                .doRead();
+    }
+
+
+    public class ExcelListener extends AnalysisEventListener<Map<Integer,String>>{
+        @Override
+        public void invoke(Map<Integer,String> data, AnalysisContext context) {
+            for (Map.Entry<Integer, String> entry : data.entrySet()) {
+                Integer k = entry.getKey();
+                String v = entry.getValue();
+                if (ObjectUtils.isEmpty(entry.getValue())) {
+                    log.warn("-->解析时发现空值：entry：{}",entry);
+                    continue;
+                }
+                if (Doubles.tryParse(v)!=null) {
+                    log.info("-->double :{}",Double.valueOf(v));
+                }else{
+                    log.info("-->String :{}",v);
+                }
+            }
+        }
+        @Override
+        public void doAfterAllAnalysed(AnalysisContext context) {
+            log.info("--> ok");
+        }
+
+        @Override
+        public void invokeHeadMap(Map<Integer, String> headMap, AnalysisContext context) {
+            log.info("--> invokeHeadMap");
+        }
+        @Override
+        public void onException(Exception exception, AnalysisContext context) throws Exception {
+            log.error("->error: ",exception);
+        }
     }
 
 

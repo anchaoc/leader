@@ -14,6 +14,12 @@ import org.apache.shiro.subject.PrincipalCollection;
 public class MyShiroRealm extends AuthorizingRealm {
 
 
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+        String userName = token.getPrincipal().toString();
+        String password = token.getCredentials().toString();
+        return new SimpleAuthenticationInfo();
+    }
 
 
     @Override
@@ -23,10 +29,8 @@ public class MyShiroRealm extends AuthorizingRealm {
     }
 
 
-    @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        return new SimpleAuthenticationInfo();
-    }
+
+
 
 
     public void clearCache() {
