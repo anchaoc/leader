@@ -3,12 +3,16 @@ package com.ac.excel;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
+import com.alibaba.excel.write.metadata.style.WriteCellStyle;
+import com.alibaba.excel.write.style.HorizontalCellStyleStrategy;
 import com.google.common.primitives.Doubles;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -22,13 +26,32 @@ public class EasyExcelTest {
 
 
     /**
+     * 测试写入
+     */
+    @Test
+    public void excelTest3(){
+        List<WriteData> writeDataList = Collections.singletonList(new WriteData("a", 16));
+        WriteCellStyle writeCellStyle = new WriteCellStyle();
+        writeCellStyle.setBottomBorderColor(IndexedColors.GOLD.index);
+        HorizontalCellStyleStrategy horizontalCellStyleStrategy = new HorizontalCellStyleStrategy(writeCellStyle,writeCellStyle);
+        EasyExcel
+                .write("C:\\Users\\anchao\\Desktop\\"+System.currentTimeMillis()+".xlsx", WriteData.class)
+                .useDefaultStyle(false)
+                .registerWriteHandler(horizontalCellStyleStrategy)
+                .sheet("sheet1")
+                .doWrite(writeDataList);
+    }
+
+
+
+    /**
      * 标准异步读取读取测试
      */
     @Test
     public void excelTest1() {
         File file = new File("C:\\Users\\anchao\\Desktop\\中税任务备份\\审计分录任务\\8万行序时账.xlsx");
         MyExcelListener myExcelListener = new MyExcelListener();
-        EasyExcel.read(file, MyData.class, myExcelListener)
+        EasyExcel.read(file, ReadData.class, myExcelListener)
                 .sheet(0)
                 .headRowNumber(5)
                 .doRead();
@@ -46,6 +69,10 @@ public class EasyExcelTest {
                 .sheet(5)
                 .doRead();
     }
+
+
+
+
 
 
     public class ExcelListener extends AnalysisEventListener<Map<Integer,String>>{
@@ -84,7 +111,7 @@ public class EasyExcelTest {
     /**
      * 异步监听
      */
-    public class MyExcelListener extends AnalysisEventListener<MyData> {
+    public class MyExcelListener extends AnalysisEventListener<ReadData> {
         /**
          * 每隔N条存储数据库，然后清理list ，方便内存回收
          */
@@ -98,7 +125,7 @@ public class EasyExcelTest {
 
 
         @Override
-        public void invoke(MyData data, AnalysisContext context) {
+        public void invoke(ReadData data, AnalysisContext context) {
             list.add(data);
             if (list.size() >= BATCH_COUNT) {
                 log.info("---->解析3000条,入库一次");

@@ -1,20 +1,20 @@
 package com.ac.excel;
 
 import com.alibaba.excel.annotation.ExcelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * @author anchao
- * @date 2020/4/13 18:12
+ * @date 2020/4/16 16:12
  **/
 @Data
-@NoArgsConstructor
-public class MyData {
-    @ExcelProperty(index = 0)
-    private String dateTime;
-    @ExcelProperty(index = 1)
-    private String num;
+@AllArgsConstructor
+public class WriteData {
 
+    @ExcelProperty(index = 0)
+    private String name;
+    @ExcelProperty(index = 1)
+    private int age;
 
 }
