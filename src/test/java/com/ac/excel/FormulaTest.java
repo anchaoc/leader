@@ -2,6 +2,7 @@ package com.ac.excel;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.apache.poi.ss.formula.FormulaParseException;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellReference;
 import org.junit.Test;
@@ -29,32 +30,41 @@ public class FormulaTest {
         meDataList= new ArrayList<>(meDataList);
 
 
-        Workbook workbook = WorkbookFactory.create(true);
-        Sheet sheet = workbook.createSheet();
-        for (MeData meData : meDataList) {
-            int row_index = meData.getRow();
-            String col = meData.getCol();
-            String value = meData.getValue();
-            if (sheet.getRow(row_index)!=null) {
-                Row row = sheet.getRow(row_index);
-                int col_index = CellReference.convertColStringToIndex(col);
-                row.createCell(col_index).setCellValue(Double.valueOf(value));
+        Workbook workbook = null;
+        try {
+            workbook = WorkbookFactory.create(true);
+            Sheet sheet = workbook.createSheet();
+            for (MeData meData : meDataList) {
+                int row_index = meData.getRow();
+                String col = meData.getCol();
+                String value = meData.getValue();
+                if (sheet.getRow(row_index)!=null) {
+                    Row row = sheet.getRow(row_index);
+                    int col_index = CellReference.convertColStringToIndex(col);
+                    row.createCell(col_index).setCellValue(Double.valueOf(value));
+                }
+                else{
+                    Row row = sheet.createRow(row_index);
+                    int col_index = CellReference.convertColStringToIndex(col);
+                    row.createCell(col_index).setCellValue(Double.valueOf(value));
+                }
             }
-            else{
-                Row row = sheet.createRow(row_index);
-                int col_index = CellReference.convertColStringToIndex(col);
-                row.createCell(col_index).setCellValue(Double.valueOf(value));
-            }
+            int rowNumNew = sheet.getLastRowNum()+1;
+            Row row = sheet.createRow(rowNumNew);
+            Cell cell = row.createCell(0);
+            FormulaEvaluator evaluator = sheet.getWorkbook().getCreationHelper().createFormulaEvaluator();
+            cell.setCellFormula("IF(A1<A2,10,20)");
+            evaluator.evaluateFormulaCell(cell);
+            CellValue cellValue = evaluator.evaluate(cell);
+            double data = cellValue.getNumberValue();
+            System.out.println("--> data: " + data);
+        } catch (IOException | NumberFormatException | FormulaParseException e) {
+            e.printStackTrace();
+        } finally {
+            assert workbook != null;
+            workbook.close();
         }
-        int rowNumNew = sheet.getLastRowNum()+1;
-        Row row = sheet.createRow(rowNumNew);
-        Cell cell = row.createCell(0);
-        FormulaEvaluator evaluator = sheet.getWorkbook().getCreationHelper().createFormulaEvaluator();
-        cell.setCellFormula("IF(A1<A2,10,20)");
-        evaluator.evaluateFormulaCell(cell);
-        CellValue cellValue = evaluator.evaluate(cell);
-        double data = cellValue.getNumberValue();
-        System.out.println("--> data: " + data);
+
     }
 
     @Data
