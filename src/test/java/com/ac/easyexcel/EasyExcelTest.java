@@ -9,11 +9,14 @@ import com.alibaba.excel.read.metadata.holder.ReadSheetHolder;
 import com.alibaba.excel.write.metadata.style.WriteCellStyle;
 import com.alibaba.excel.write.style.HorizontalCellStyleStrategy;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.util.CellReference;
 import org.junit.Test;
 
 import java.io.File;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -70,9 +73,17 @@ public class EasyExcelTest {
         log.info("总导入sheet页数 size：{}",size-1);
     }
 
-    public class ExcelListener extends AnalysisEventListener<Map<Integer,String>>{
+    public class ExcelListener extends AnalysisEventListener<LinkedHashMap<Integer,String>>{
         @Override
-        public void invoke(Map<Integer,String> data, AnalysisContext context) {
+        public void invoke(LinkedHashMap<Integer,String> data, AnalysisContext context) {
+            data.forEach((k,v)->{
+                String col_name = CellReference.convertNumToColString(k);
+                if (StringUtils.isNotEmpty(v)) {
+                    log.info("当前sheet页解析中 col_name:{} value：{}",col_name,v);
+                }else{
+                    log.info("当前sheet页解析中 col_name:{} value：{}",col_name,v);
+                }
+            });
             ReadSheetHolder readSheetHolder = context.readSheetHolder();
             ReadRowHolder readRowHolder = context.readRowHolder();
             Integer rowIndex = readRowHolder.getRowIndex();
