@@ -1,13 +1,14 @@
 package com.ac.excel;
 
 import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.ExcelReader;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
+import com.alibaba.excel.read.metadata.holder.ReadRowHolder;
+import com.alibaba.excel.read.metadata.holder.ReadSheetHolder;
 import com.alibaba.excel.write.metadata.style.WriteCellStyle;
 import com.alibaba.excel.write.style.HorizontalCellStyleStrategy;
-import com.google.common.primitives.Doubles;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.junit.Test;
 
@@ -17,14 +18,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-/**
+/** alibaba easy excel
  * @author anchao
  * @date 2020/4/13 16:31
  **/
 @Slf4j
 public class EasyExcelTest {
-
-
     /**
      * 测试写入
      */
@@ -42,10 +41,8 @@ public class EasyExcelTest {
                 .doWrite(writeDataList);
     }
 
-
-
     /**
-     * 标准异步读取读取测试
+     * 标准逐条读取读取测试
      */
     @Test
     public void excelTest1() {
@@ -58,54 +55,63 @@ public class EasyExcelTest {
     }
 
 
+
+
     /**
-     * 特殊异步读取读取测试
+     * 特殊逐条读取读取测试
      */
     @Test
     public void excelTest2(){
-        File file = new File("C:\\Users\\anchao\\Desktop\\中税任务备份\\excel公式\\2020-3-29公式修订后版-工作底稿与申报表及调整汇总等全部链接V8 - 副本.xlsx");
+        File file = new File("C:\\Users\\anchao\\Desktop\\12.xlsx");
         ExcelListener myExcelListener = new ExcelListener();
-        EasyExcel.read(file,myExcelListener)
-                .sheet(5)
-                .doRead();
+        ExcelReader excelReader = EasyExcel.read(file, myExcelListener)
+                .doReadAll();
+        int size = excelReader.excelExecutor().sheetList().size();
+        log.info("总导入sheet页数 size：{}",size-1);
     }
-
-
-
-
-
 
     public class ExcelListener extends AnalysisEventListener<Map<Integer,String>>{
         @Override
         public void invoke(Map<Integer,String> data, AnalysisContext context) {
-            for (Map.Entry<Integer, String> entry : data.entrySet()) {
-                Integer k = entry.getKey();
-                String v = entry.getValue();
-                if (ObjectUtils.isEmpty(entry.getValue())) {
-                    log.warn("-->解析时发现空值：entry：{}",entry);
-                    continue;
-                }
-                if (Doubles.tryParse(v)!=null) {
-                    log.info("-->double :{}",Double.valueOf(v));
-                }else{
-                    log.info("-->String :{}",v);
-                }
-            }
+            ReadSheetHolder readSheetHolder = context.readSheetHolder();
+            ReadRowHolder readRowHolder = context.readRowHolder();
+            Integer rowIndex = readRowHolder.getRowIndex();
+            String sheetName = readSheetHolder.getSheetName();
+            Integer sheetNo = readSheetHolder.getSheetNo();
+            log.info("当前sheet页解析中  sheetName：{},sheetNo:{},rowIndex：{}",sheetName,sheetNo,rowIndex);
+            System.out.println(data);
         }
         @Override
         public void doAfterAllAnalysed(AnalysisContext context) {
-            log.info("--> ok");
+            ReadSheetHolder readSheetHolder = context.readSheetHolder();
+            ReadRowHolder readRowHolder = context.readRowHolder();
+            Integer rowIndex = readRowHolder.getRowIndex();
+            String sheetName = readSheetHolder.getSheetName();
+            Integer sheetNo = readSheetHolder.getSheetNo();
+            log.info("当前sheet页解析完成  sheetName：{},sheetNo:{},rowIndex：{}",sheetName,sheetNo,rowIndex);
         }
 
         @Override
         public void invokeHeadMap(Map<Integer, String> headMap, AnalysisContext context) {
-            log.info("--> invokeHeadMap");
+            ReadSheetHolder readSheetHolder = context.readSheetHolder();
+            ReadRowHolder readRowHolder = context.readRowHolder();
+            Integer rowIndex = readRowHolder.getRowIndex();
+            String sheetName = readSheetHolder.getSheetName();
+            Integer sheetNo = readSheetHolder.getSheetNo();
+            log.info("当前sheet页解析表头部分 sheetName：{},sheetNo:{},rowIndex：{}",sheetName,sheetNo,rowIndex);
+            System.out.println(headMap);
         }
         @Override
         public void onException(Exception exception, AnalysisContext context) throws Exception {
-            log.error("->error: ",exception);
+            ReadSheetHolder readSheetHolder = context.readSheetHolder();
+            ReadRowHolder readRowHolder = context.readRowHolder();
+            Integer rowIndex = readRowHolder.getRowIndex();
+            String sheetName = readSheetHolder.getSheetName();
+            Integer sheetNo = readSheetHolder.getSheetNo();
+            log.error("当前sheet页解析异常 sheetName：{},sheetNo:{},rowIndex：{},exception:{}",sheetName,sheetNo,rowIndex,exception);
         }
     }
+
 
 
     /**
