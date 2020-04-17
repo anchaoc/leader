@@ -34,5 +34,6 @@ public class FormulaTest {
         CellValue cellValue = evaluator.evaluate(cell);
         double celldata = cellValue.getNumberValue();
         System.out.println("--> value: " + celldata);
+        //workbook.write(new FileOutputStream("C:\\Users\\anchao\\Desktop\\formula.xlsx"));
     }
 }
