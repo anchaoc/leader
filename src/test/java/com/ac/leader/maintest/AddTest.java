@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  * @author anchao
  * @date 2020/3/6 22:44
  */
-public class MainTest {
+public class AddTest {
 
     public static void main(String[] args) {
         intersection();

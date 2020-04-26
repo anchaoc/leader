@@ -1,7 +1,9 @@
 package com.ac.guava.eventbus;
 
 import com.ac.guava.eventbus.listeners.SimpleListener;
-import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.AsyncEventBus;
+
+import java.util.concurrent.Executors;
 
 /** 事件发送
  * @author anchao
@@ -10,8 +12,8 @@ import com.google.common.eventbus.EventBus;
 public class SimpleEventBusExample {
 
     public static void main(String[] args) {
-
-      final  EventBus eventBus = new EventBus();
+       //异步事件
+      final AsyncEventBus eventBus = new AsyncEventBus(Executors.newFixedThreadPool(10));
         eventBus.register(new SimpleListener());
         System.out.println("post the simple event .");
         eventBus.post("Simple Event");

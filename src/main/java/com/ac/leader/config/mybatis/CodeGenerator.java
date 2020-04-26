@@ -99,7 +99,7 @@ public class CodeGenerator {
         // 【实体】是否为lombok模型（默认 false）
         strategy.setEntityLombokModel(true);
         strategy.setInclude(
-                "zs_assets_liabilities_sheet_name"
+                "risk_report_formula_item_table"
         );
         // 驼峰转连字符
         strategy.setControllerMappingHyphenStyle(true);
