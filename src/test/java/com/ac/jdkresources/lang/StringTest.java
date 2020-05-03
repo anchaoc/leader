@@ -13,6 +13,9 @@ public class StringTest {
     public void stringTest(){
         String st1 = "abc";
         String st2 = "abc";
+        String concat = st1.concat(st2);
+        System.out.println(concat);
+        System.out.println(concat+"1");
         System.out.println(st1 == st2);
         System.out.println(st1.equals(st2));
     }
@@ -32,5 +35,19 @@ public class StringTest {
         String st3 = st1 + "c";
         System.out.println(st2 == st3);
         System.out.println(st2.equals(st3));
+    }
+
+    public static void main(String[] args) {
+        String arr="a";
+        for (int i = 0; i <10 ; i++) {
+            arr+=i;
+        }
+        System.out.println(arr);
+
+        StringBuilder arr2 = new StringBuilder("b");
+        for (int i = 0; i <10 ; i++) {
+            arr2.append(i);
+        }
+        System.out.println(arr2);
     }
 }
