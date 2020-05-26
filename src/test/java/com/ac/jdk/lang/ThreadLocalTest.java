@@ -1,4 +1,4 @@
-package com.ac.jdkresources.lang;
+package com.ac.jdk.lang;
 
 import org.junit.Test;
 

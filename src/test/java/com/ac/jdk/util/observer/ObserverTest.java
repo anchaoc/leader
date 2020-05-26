@@ -1,4 +1,4 @@
-package com.ac.jdkresources.util.observer;
+package com.ac.jdk.util.observer;
 
 /**
  * @author anchao

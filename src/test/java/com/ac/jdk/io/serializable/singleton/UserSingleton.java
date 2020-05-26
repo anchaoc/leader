@@ -1,4 +1,4 @@
-package com.ac.jdkresources.io.serializable.singleton;
+package com.ac.jdk.io.serializable.singleton;
 
 import java.io.Serializable;
 

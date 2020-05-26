@@ -1,6 +1,6 @@
-package com.ac.jdkresources.io.serializable.test;
+package com.ac.jdk.io.serializable.test;
 
-import com.ac.jdkresources.io.serializable.entity.User;
+import com.ac.jdk.io.serializable.entity.User;
 import org.apache.commons.compress.utils.IOUtils;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 

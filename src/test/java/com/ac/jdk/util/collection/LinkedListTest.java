@@ -1,4 +1,4 @@
-package com.ac.jdkresources.util.collection;
+package com.ac.jdk.util.collection;
 
 import java.util.LinkedList;
 

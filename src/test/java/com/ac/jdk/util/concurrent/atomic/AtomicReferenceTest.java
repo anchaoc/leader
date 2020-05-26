@@ -1,4 +1,4 @@
-package com.ac.jdkresources.util.concurrent.atomic;
+package com.ac.jdk.util.concurrent.atomic;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

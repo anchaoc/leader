@@ -1,4 +1,4 @@
-package com.ac.jdkresources.io.serializable.entity;
+package com.ac.jdk.io.serializable.entity;
 import java.io.Serializable;
 import java.util.Date;
 

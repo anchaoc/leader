@@ -1,4 +1,4 @@
-package com.ac.jdkresources.util.concurrent;
+package com.ac.jdk.util.concurrent;
 
 import org.junit.Test;
 

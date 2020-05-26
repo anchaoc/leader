@@ -1,6 +1,6 @@
-package com.ac.jdkresources.io.serializable.test;
+package com.ac.jdk.io.serializable.test;
 
-import com.ac.jdkresources.io.serializable.singleton.UserSingleton;
+import com.ac.jdk.io.serializable.singleton.UserSingleton;
 
 /**
  * @author anchao
