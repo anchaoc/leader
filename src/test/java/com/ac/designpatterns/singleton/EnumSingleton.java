@@ -1,34 +1,29 @@
 package com.ac.designpatterns.singleton;
 
-/** 枚举实现单例
+/** 枚举单例
  * @author anchao
- * @date 2020/5/26 13:58
+ * @date 2020/5/27 14:16
  **/
 public enum EnumSingleton {
-    INSTANCE;
+    INSTANCE{
+        protected void print(String s){
+            System.out.println("打印："+s);
+        }
+    };
+    protected abstract void print(String str);
+
     private Object data;
 
-    EnumSingleton() {
+    public Object getData() {
+        return data;
     }
 
     public void setData(Object data) {
         this.data = data;
     }
 
-    public Object getData() {
-        return data;
+    public static EnumSingleton getInstance(){
+        return INSTANCE;
     }
 
-
-
-    public static void main(String[] args) {
-        EnumSingleton enumSingleton3 =  EnumSingleton.INSTANCE;
-        enumSingleton3.setData(new Object());
-        EnumSingleton enumSingleton2 =  EnumSingleton.INSTANCE;
-        enumSingleton2.setData(new Object());
-        System.out.println(enumSingleton3.getData() );
-        System.out.println(enumSingleton2.getData() );
-        System.out.println(enumSingleton3.getData() == enumSingleton2.getData());
-        System.out.println(enumSingleton3.getData() == enumSingleton2.getData());
-    }
 }
