@@ -3,6 +3,7 @@ package com.ac.designpatterns.creational.prototype;
 import java.util.Date;
 
 /**
+ * 原型模式
  * @author anchao
  * @date 2020/5/29 9:53
  **/

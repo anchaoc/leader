@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 /**
+ * 单例模式
  * @author anchao
  * @date 2020/5/27 10:18
  **/

@@ -1,6 +1,7 @@
 package com.ac.designpatterns.structural.observer;
 
 /**
+ * 观察者模式
  * @author anchao
  * @date 2020/5/29 10:24
  **/
