@@ -1,4 +1,4 @@
-package com.ac.designpatterns.singleton;
+package com.ac.designpatterns.creational.singleton;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

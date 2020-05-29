@@ -1,4 +1,4 @@
-package com.ac.designpatterns.singleton;
+package com.ac.designpatterns.creational.singleton;
 
 /**
  * 静态内部类方式 单例

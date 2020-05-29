@@ -1,4 +1,4 @@
-package com.ac.designpatterns.singleton;
+package com.ac.designpatterns.creational.singleton;
 
 import org.junit.platform.commons.util.StringUtils;
 

@@ -1,4 +1,4 @@
-package com.ac.designpatterns.singleton;
+package com.ac.designpatterns.creational.singleton;
 
 /**
  * 懒汉式单例
