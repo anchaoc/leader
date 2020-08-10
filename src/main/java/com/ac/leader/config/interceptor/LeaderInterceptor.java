@@ -16,17 +16,17 @@ public class LeaderInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.warn("-->LeaderInterceptor preHandle .");
+        log.info("-->LeaderInterceptor preHandle .");
         return true;
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        log.warn("-->LeaderInterceptor postHandle .");
+        log.info("-->LeaderInterceptor postHandle .");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        log.warn("-->LeaderInterceptor afterCompletion .");
+        log.info("-->LeaderInterceptor afterCompletion .");
     }
 }
