@@ -1,17 +1,20 @@
-package com.ac.leader.controller;
+package com.ac.leader.controller.leader;
 
 import com.ac.common.Result;
+import com.ac.leader.controller.base.BaseController;
 import com.ac.leader.entity.Leader;
 import com.ac.leader.model.dto.LeaderDTO;
 import com.ac.leader.service.LeaderService;
+import com.ac.shiro.entity.SysUser;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -21,17 +24,19 @@ import java.util.List;
 @Api(tags = "leader api")
 @RestController
 @RequestMapping("leader")
-public class LeaderController {
-
-    @Autowired
+public class LeaderController extends BaseController {
+    @Resource
     private LeaderService leaderService;
 
-    /**
-     * 保存单条
-     */
-    @ApiOperation("save")
-    @GetMapping("save")
-    public void save(){
+    @GetMapping("get")
+    @ApiOperation(value = "get",notes = "get api")
+    public Result<Boolean> get() {
+        SysUser currentUser = getCurrentUser();
+        return null;
+    }
+
+    @PostMapping("save")
+    public void save() {
         Leader leaderNew = new Leader();
         leaderNew.setLeaderName("xiaoming");
         leaderNew.setLeaderAddress("北京昌平");
@@ -40,12 +45,11 @@ public class LeaderController {
         System.out.println(leader);
     }
 
-    @ApiOperation("list")
     @GetMapping("list")
-    public Result list(LeaderDTO leaderVo){
+    public Result<Object> list(LeaderDTO leaderVo) {
         Mono<List<Leader>> listMono = Mono.fromSupplier(() -> leaderService.list(leaderVo));
         Result<Object> result = new Result<>();
-        listMono.subscribe(s ->{
+        listMono.subscribe(s -> {
             result.setData(s);
         });
         return result;
