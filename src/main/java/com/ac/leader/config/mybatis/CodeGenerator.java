@@ -52,10 +52,10 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://123.56.234.159:3306/taxbook?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL");
+        dsc.setUrl("jdbc:mysql://192.168.100.30:3306/verification?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("Zs@123456");
+        dsc.setPassword("root123");
         mpg.setDataSource(dsc);
 
         // 包配置
@@ -99,7 +99,8 @@ public class CodeGenerator {
         // 【实体】是否为lombok模型（默认 false）
         strategy.setEntityLombokModel(true);
         strategy.setInclude(
-                "risk_report_formula_item_table"
+                "pre_verify_formula",
+                "pre_verify_param"
         );
         // 驼峰转连字符
         strategy.setControllerMappingHyphenStyle(true);

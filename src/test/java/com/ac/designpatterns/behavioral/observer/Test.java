@@ -1,7 +1,7 @@
-package com.ac.designpatterns.structural.observer;
+package com.ac.designpatterns.behavioral.observer;
 
 /**
- * 观察者模式
+ * 行为型--观察者模式
  * @author anchao
  * @date 2020/5/29 10:24
  **/

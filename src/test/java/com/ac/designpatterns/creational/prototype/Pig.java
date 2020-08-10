@@ -14,7 +14,7 @@ public class Pig implements Cloneable{
     private Date birthday;
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         Pig pigClone = (Pig)super.clone();
         //深克隆
         pigClone.birthday = (Date) birthday.clone();

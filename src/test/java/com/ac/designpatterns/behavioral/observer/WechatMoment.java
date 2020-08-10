@@ -1,4 +1,4 @@
-package com.ac.designpatterns.structural.observer;
+package com.ac.designpatterns.behavioral.observer;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
