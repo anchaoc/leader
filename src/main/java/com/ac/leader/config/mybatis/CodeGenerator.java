@@ -43,7 +43,7 @@ public class CodeGenerator {
         GlobalConfig gc = new GlobalConfig();
         String projectPath = "D:/JAVABEAN";
         gc.setOutputDir(projectPath + "/src/main/java");
-        gc.setAuthor("anchao");
+        gc.setAuthor("pjh");
         gc.setOpen(true);
         gc.setServiceName("%sService");
         gc.setBaseResultMap(true);
@@ -99,8 +99,7 @@ public class CodeGenerator {
         // 【实体】是否为lombok模型（默认 false）
         strategy.setEntityLombokModel(true);
         strategy.setInclude(
-                "pre_verify_formula",
-                "pre_verify_param"
+                "standard_table"
         );
         // 驼峰转连字符
         strategy.setControllerMappingHyphenStyle(true);

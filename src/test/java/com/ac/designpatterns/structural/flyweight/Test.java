@@ -1,7 +1,7 @@
 package com.ac.designpatterns.structural.flyweight;
 
 /**
- * 享元模式
+ * 结构型--享元模式
  * @author anchao
  * @date 2020/5/29 11:19
  **/
