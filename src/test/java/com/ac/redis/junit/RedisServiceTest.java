@@ -1,6 +1,6 @@
 package com.ac.redis.junit;
 
-import com.ac.leader.junit.BaseTest;
+import com.ac.learn.junit.BaseTest;
 import com.ac.redis.service.base.RedisService;
 import com.google.common.collect.Maps;
 import org.junit.Test;
