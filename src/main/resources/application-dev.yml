@@ -10,7 +10,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     username: root
     password: root
-    url: jdbc:mysql://localhost:3306/learn?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL
+    url: jdbc:mysql://localhost:3306/leader?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=CONVERT_TO_NULL
     hikari:
       connection-timeout: 2000
 
@@ -46,7 +46,7 @@ mybatis-plus:
       # 逻辑删除配置
       logic-delete-value: 0
       logic-not-delete-value: 1
-  type-aliases-package: com.ac.learn.entity
+  type-aliases-package: com.ac.leader.entity
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 

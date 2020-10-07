@@ -1,7 +1,9 @@
 package com.ac;
 
+import com.ac.common.util.LogUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * @author anchao
@@ -11,7 +13,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class LeaderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LeaderApplication.class, args);
+        ConfigurableApplicationContext run = SpringApplication.run(LeaderApplication.class, args);
+        Object getPerson = run.getBean("getPerson");
+        LogUtil.printLog(getPerson.toString());
     }
 
 }
