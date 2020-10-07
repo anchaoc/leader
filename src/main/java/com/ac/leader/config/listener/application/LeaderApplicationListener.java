@@ -18,7 +18,7 @@ public class LeaderApplicationListener implements ApplicationListener<ContextRef
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        log.info("Spring容器加载完成触发,可用于初始化环境，准备测试数据、加载一些数据到内存");
+        log.info("监听 Spring容器加载完成触发,可用于初始化环境，准备测试数据、加载一些数据到内存");
         //此处可以开启一个线程，用于查询首页数据，并缓存在内容中，供所有的首页进行查询
         //代码省略
         long timestamp = event.getTimestamp();
