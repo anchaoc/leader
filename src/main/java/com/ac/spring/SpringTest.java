@@ -16,12 +16,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(classes = LeaderApplication.class)
 public class SpringTest {
 
-   // @Autowired
-  //  private SpringContext springContext;
-
     @Test
     public void testInitBean(){
         Object getPerson = SpringContext.getBean("getPerson");
+        Object getPerson2 = SpringContext.getBean("getPerson");
         LogUtil.printLog(getPerson.toString());
+        LogUtil.printLog(getPerson2.toString());
+        System.out.println(getPerson == getPerson2);
     }
 }

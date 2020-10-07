@@ -4,6 +4,7 @@ import com.ac.common.util.LogUtil;
 import com.ac.spring.bean.Person;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 /**
  * @author anchao
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfig {
 
     @Bean
+    @Scope("prototype")
     public Person getPerson(){
         Person person = new Person();
         person.setLastName("安超");
