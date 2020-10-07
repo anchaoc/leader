@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ac</groupId>
-    <artifactId>leader</artifactId>
+    <artifactId>learn</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>leader</name>
-    <description>个人演示工程</description>
+    <name>learn</name>
+    <description>学习工程</description>
 
     <properties>
         <!--跳过启动测试-->

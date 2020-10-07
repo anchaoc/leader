@@ -1,0 +1,44 @@
+package com.ac.learn.enums;
+
+import com.ac.learn.interfaces.CheckFirstInterface;
+
+import java.util.List;
+
+/** 枚举实现多个判断
+ * @author anchao
+ * @date 2020/4/26 13:56
+ **/
+public enum CheckFirstEnum implements CheckFirstInterface {
+
+    /**
+     * 等于
+     */
+    EQUAL {
+        @Override
+        public String getFirstAndLast(List list) {
+            System.out.println(" = ");
+            return null;
+        }
+    },
+
+    /**
+     * 大于
+     */
+    GT {
+        @Override
+        public String getFirstAndLast(List list) {
+            System.out.println(" > ");
+            return null;
+        }
+    },
+    /**
+     * 小于
+     */
+    LT {
+        @Override
+        public String getFirstAndLast(List list) {
+            System.out.println(" < ");
+            return null;
+        }
+    }
+}
