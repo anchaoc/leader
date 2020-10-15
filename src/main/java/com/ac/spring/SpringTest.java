@@ -24,4 +24,20 @@ public class SpringTest {
         LogUtil.printLog(getPerson2.toString());
         System.out.println(getPerson == getPerson2);
     }
+
+    @Test
+    public void getPersonFactoryBean(){
+        Object myFactoryBean = SpringContext.getBean("myFactoryBean");
+        System.out.println(myFactoryBean.toString());
+    }
+
+    @Test
+    public void getMyBeanPostProcessor(){
+        Object myBeanPostProcessor = SpringContext.getBean("myBeanPostProcessor");
+        System.out.println(myBeanPostProcessor.toString());
+    }
+    @Test
+    public void test(){
+
+    }
 }
