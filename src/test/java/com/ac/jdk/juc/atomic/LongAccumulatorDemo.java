@@ -6,12 +6,16 @@ import java.util.concurrent.atomic.LongAccumulator;
 import java.util.stream.IntStream;
 
 /**
- * 描述：     演示LongAccumulator的用法
+ * 描述：     演示LongAccumulator的用法,不限制于累加
  */
 public class LongAccumulatorDemo {
 
     public static void main(String[] args) {
-        LongAccumulator accumulator = new LongAccumulator((x, y) -> 2 + x * y, 1);
+        LongAccumulator accumulator = new LongAccumulator((x, y) -> 10 + x * y, 1);
+        accumulator.accumulate(10);
+        System.out.println(accumulator.getThenReset());
+
+
         ExecutorService executor = Executors.newFixedThreadPool(8);
         IntStream.range(1, 10).forEach(i -> executor.submit(() -> accumulator.accumulate(i)));
 

@@ -1,5 +1,7 @@
 package com.ac.jdk.juc.atomic;
 
+import com.google.common.base.Stopwatch;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicLong;
@@ -12,6 +14,7 @@ public class AtomicLongDemo {
     public static void main(String[] args) throws InterruptedException {
         AtomicLong counter = new AtomicLong(0);
         ExecutorService service = Executors.newFixedThreadPool(20);
+        Stopwatch started = Stopwatch.createStarted();
         long start = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
             service.submit(new Task(counter));
@@ -20,7 +23,9 @@ public class AtomicLongDemo {
         while (!service.isTerminated()) {
 
         }
+        started.stop();
         long end = System.currentTimeMillis();
+        System.out.println(started);
         System.out.println(counter.get());
         System.out.println("AtomicLong耗时：" + (end - start));
     }
