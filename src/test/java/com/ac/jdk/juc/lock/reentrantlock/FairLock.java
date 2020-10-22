@@ -44,7 +44,7 @@ class Job implements Runnable {
 
 class PrintQueue {
 
-    private Lock queueLock = new ReentrantLock(true);
+    private Lock queueLock = new ReentrantLock(false);
 
     public void printJob(Object document) {
         queueLock.lock();
