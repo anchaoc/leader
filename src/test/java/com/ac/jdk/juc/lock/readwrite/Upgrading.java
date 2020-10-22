@@ -7,10 +7,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  */
 public class Upgrading {
 
-    private static ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock(
+    private static final ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock(
             false);
-    private static ReentrantReadWriteLock.ReadLock readLock = reentrantReadWriteLock.readLock();
-    private static ReentrantReadWriteLock.WriteLock writeLock = reentrantReadWriteLock.writeLock();
+    private static final ReentrantReadWriteLock.ReadLock readLock = reentrantReadWriteLock.readLock();
+    private static final ReentrantReadWriteLock.WriteLock writeLock = reentrantReadWriteLock.writeLock();
 
     private static void readUpgrading() {
         readLock.lock();
@@ -23,6 +23,7 @@ public class Upgrading {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
+            writeLock.unlock();
             System.out.println(Thread.currentThread().getName() + "释放读锁");
             readLock.unlock();
         }

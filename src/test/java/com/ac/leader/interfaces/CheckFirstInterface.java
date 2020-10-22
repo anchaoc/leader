@@ -6,7 +6,7 @@ import java.util.List;
  * @author anchao
  * @date 2020/4/26 15:28
  **/
-public interface CheckFirstInterface {
+public interface CheckFirstInterface<E> {
 
-    String getFirstAndLast(List list);
+    E getFirstAndLast(List<E> list);
 }

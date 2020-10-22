@@ -1,7 +1,7 @@
 package com.ac.jdk.juc.collections.copyonwrite;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * 描述：演示CopyOnWriteArrayList可以在迭代的过程中修改数组内容，但是ArrayList不行，对比
@@ -9,8 +9,8 @@ import java.util.Iterator;
 public class CopyOnWriteArrayListDemo1 {
 
     public static void main(String[] args) {
-        ArrayList<String> list = new ArrayList<>();
-//        CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+        //ArrayList<String> list = new ArrayList<>();
+       CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
 
         list.add("1");
         list.add("2");
