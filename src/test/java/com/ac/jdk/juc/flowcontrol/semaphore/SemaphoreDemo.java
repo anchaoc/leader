@@ -9,7 +9,7 @@ import java.util.concurrent.Semaphore;
  */
 public class SemaphoreDemo {
 
-    static Semaphore semaphore = new Semaphore(1, true);
+    static Semaphore semaphore = new Semaphore(10, true);
 
     public static void main(String[] args) {
         ExecutorService service = Executors.newFixedThreadPool(50);
@@ -24,7 +24,7 @@ public class SemaphoreDemo {
         @Override
         public void run() {
             try {
-                semaphore.acquire(1);
+                semaphore.acquire();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -35,7 +35,7 @@ public class SemaphoreDemo {
                 e.printStackTrace();
             }
             System.out.println(Thread.currentThread().getName() + "释放了许可证");
-            semaphore.release(2);
+            semaphore.release();
         }
     }
 }
