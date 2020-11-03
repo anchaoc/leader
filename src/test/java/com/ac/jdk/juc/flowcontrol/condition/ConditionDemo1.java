@@ -39,7 +39,7 @@ public class ConditionDemo1 {
                 try {
                     Thread.sleep(1000);
                     conditionDemo1.method2();
-                } catch (InterruptedException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
