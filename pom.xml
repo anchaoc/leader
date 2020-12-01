@@ -258,7 +258,12 @@
             <version>5.3.4</version>
         </dependency>
 
-
+       <!-- <dependency>
+            <groupId>com.wukong.study</groupId>
+            <artifactId>spring-boot-start-study</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+-->
     </dependencies>
 
     <build>
