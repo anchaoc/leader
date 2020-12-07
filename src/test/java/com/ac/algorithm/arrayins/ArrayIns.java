@@ -1,5 +1,7 @@
 package com.ac.algorithm.arrayins;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 /**
  * 插入排序数组
  */
@@ -39,6 +41,7 @@ public class ArrayIns {
      * 插入排序
      */
     public void insertionSort(){
+        new CopyOnWriteArrayList<>();
         int out,in;
         for (out=1;out<nElems;out++){
             long temp = a[out];
