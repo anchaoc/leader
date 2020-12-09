@@ -1,15 +1,14 @@
-package com.ac.algorithm.arrayselect;
-
+package com.ac.datastructure.easy.arraybub;
 /**
- * 测试选择排序
+ * 测试冒泡排序数组
  */
-public class ArraySelApp {
+public class ArrayBubApp {
 
     public static void main(String[] args) {
 
         int maxSize =100;
-        ArraySel arr;
-        arr =new ArraySel(maxSize);
+        ArrayBub arr;
+        arr =new ArrayBub(maxSize);
         arr.insert(11);
         arr.insert(99);
         arr.insert(66);
@@ -19,9 +18,9 @@ public class ArraySelApp {
         arr.insert(44);
         arr.insert(33);
         arr.insert(77);
-        arr.insert(77);
+        arr.insert(45);
         arr.display();
-        arr.selectionSort();
+        arr.bubbleSort();
         arr.display();
 
     }

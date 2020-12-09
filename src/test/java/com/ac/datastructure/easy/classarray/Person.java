@@ -1,4 +1,4 @@
-package com.ac.algorithm.classarray;
+package com.ac.datastructure.easy.classarray;
 
 /**
  * Person实体

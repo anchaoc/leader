@@ -1,4 +1,4 @@
-package com.ac.algorithm.arrayselect;
+package com.ac.datastructure.easy.arrayselect;
 
 /**
  * 选择排序数组

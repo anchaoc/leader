@@ -1,4 +1,4 @@
-package com.ac.algorithm.arraybub;
+package com.ac.datastructure.easy.arraybub;
 
 /**
  * 冒泡排序数组

@@ -1,4 +1,4 @@
-package com.ac.algorithm.ordarray;
+package com.ac.datastructure.easy.ordarray;
 
 /**
  * 有序数组

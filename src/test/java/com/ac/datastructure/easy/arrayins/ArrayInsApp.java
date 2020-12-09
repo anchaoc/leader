@@ -1,4 +1,4 @@
-package com.ac.algorithm.arrayins;
+package com.ac.datastructure.easy.arrayins;
 
 /**
  * 测试插入排序

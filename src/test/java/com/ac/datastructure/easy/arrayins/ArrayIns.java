@@ -1,4 +1,4 @@
-package com.ac.algorithm.arrayins;
+package com.ac.datastructure.easy.arrayins;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
