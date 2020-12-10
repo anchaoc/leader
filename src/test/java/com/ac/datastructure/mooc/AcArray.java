@@ -104,7 +104,7 @@ public class AcArray<E> {
         size--;
         data[size] = null;//置空引用
         //缩小容量
-        if(size == data.length /2 )
+        if(size == data.length /4  &&  data.length /2 !=0 )
             this.resize(data.length/2);
         return ret;
     }
