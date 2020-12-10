@@ -1,3 +1,4 @@
+/*
 package com.ac.shiro.config;
 
 import com.ac.shiro.filter.MyShiroFilter;
@@ -14,7 +15,6 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.crazycake.shiro.RedisCacheManager;
 import org.crazycake.shiro.RedisManager;
 import org.crazycake.shiro.RedisSessionDAO;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -28,13 +28,13 @@ import java.util.Map;
 @Configuration
 public class ShiroConfig {
 
-    @Value("${spring.redis.host}")
+   // @Value("${spring.redis.host}")
     private String host;
-    @Value("${spring.redis.port}")
+    //@Value("${spring.redis.port}")
     private int port;
-    @Value("${spring.redis.timeout}")
+   // @Value("${spring.redis.timeout}")
     private int timeout;
-    @Value("${spring.redis.database}")
+   // @Value("${spring.redis.database}")
     private int database;
 
 
@@ -143,3 +143,4 @@ public class ShiroConfig {
 
 
 }
+*/

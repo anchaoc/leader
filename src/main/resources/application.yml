@@ -2,6 +2,6 @@ spring:
   profiles:
     active: dev
 
-logging:
-  level:
-    com.ac: trace
+#logging:
+    # level:
+  #  com.ac: trace

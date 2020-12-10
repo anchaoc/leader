@@ -1,3 +1,4 @@
+/*
 package com.ac.redis.service.base;
 
 import org.springframework.data.redis.core.BoundHashOperations;
@@ -8,10 +9,12 @@ import javax.annotation.Resource;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+*/
 /**
  * @author anchao
  * @date 2020/3/6 0:19
- */
+ *//*
+
 @Component
 public class RedisServiceImpl<T> implements RedisService<T> {
 
@@ -34,3 +37,4 @@ public class RedisServiceImpl<T> implements RedisService<T> {
     }
 
 }
+*/

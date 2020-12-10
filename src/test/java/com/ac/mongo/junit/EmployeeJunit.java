@@ -1,3 +1,4 @@
+/*
 package com.ac.mongo.junit;
 
 import com.ac.LeaderApplication;
@@ -17,10 +18,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+*/
 /** mongo工具测试
  * @author anchao
  * @date 2020/3/4 12:46
- */
+ *//*
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = LeaderApplication.class)
 public class EmployeeJunit {
@@ -31,9 +34,11 @@ public class EmployeeJunit {
     private MongoTemplate mongoTemplate;
 
 
-    /**
+    */
+/**
      * 添加
-     */
+     *//*
+
     @Test
     public void save(){
         EmployeeDocument employeeDocument = EmployeeDocument.builder().name("anchao").age(25).build();
@@ -43,9 +48,11 @@ public class EmployeeJunit {
 
 
 
-    /**
+    */
+/**
      * 删除
-     */
+     *//*
+
     @Test
     public void delete(){
         Criteria criteria = Criteria.where("name");
@@ -55,9 +62,11 @@ public class EmployeeJunit {
         System.out.println(employeeDocumentList);
     }
 
-    /**
+    */
+/**
      * 修改
-     */
+     *//*
+
     @Test
     public void update(){
         EmployeeDocument employeeDocument = EmployeeDocument.builder().name("jack").age(10).build();
@@ -70,9 +79,11 @@ public class EmployeeJunit {
 
 
 
-    /**
+    */
+/**
      * example查询
-     */
+     *//*
+
     @Test
     public void queryByExample(){
         EmployeeDocument employeeDocument = EmployeeDocument.builder().name("anchao").age(25).build();
@@ -83,9 +94,11 @@ public class EmployeeJunit {
 
     }
 
-    /**
+    */
+/**
      * 去重条件查询
-     */
+     *//*
+
     @Test
     public void queryMany(){
         Criteria criteria = new Criteria();
@@ -139,3 +152,4 @@ public class EmployeeJunit {
 
 
 }
+*/

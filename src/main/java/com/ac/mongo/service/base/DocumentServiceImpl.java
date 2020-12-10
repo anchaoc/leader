@@ -1,3 +1,4 @@
+/*
 package com.ac.mongo.service.base;
 
 import com.mongodb.client.result.UpdateResult;
@@ -11,17 +12,19 @@ import org.springframework.data.repository.NoRepositoryBean;
 import javax.annotation.Resource;
 import java.util.List;
 
+*/
 /**
  * mongo通用服务
  * @author anchao
  * @date 2020/3/4 12:42
- */
+ *//*
+
 @Slf4j
-@NoRepositoryBean
+//@NoRepositoryBean
 public class DocumentServiceImpl<T> implements DocumentService<T> {
 
-    @Resource
-    private MongoTemplate mongoTemplate;
+    //@Resource
+    //private MongoTemplate mongoTemplate;
 
 
     @Override
@@ -54,9 +57,11 @@ public class DocumentServiceImpl<T> implements DocumentService<T> {
         return updateResult.getModifiedCount();
     }
 
-    /**
+    */
+/**
      * 多条件构造
-     */
+     *//*
+
     private Query getQuery(List<Criteria> criterias) {
         Query query = new Query();
         criterias.forEach(c -> {
@@ -65,3 +70,4 @@ public class DocumentServiceImpl<T> implements DocumentService<T> {
         return query;
     }
 }
+*/

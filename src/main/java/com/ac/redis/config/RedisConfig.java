@@ -1,3 +1,4 @@
+/*
 package com.ac.redis.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
@@ -10,21 +11,25 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 
+*/
 /**
  * @author anchao
  * @date 2020/3/6 0:27
- */
+ *//*
+
 //@EnableCaching
 @Configuration
 public class RedisConfig {
 
 
-    /**
+    */
+/**
      * redis替换spring cache
      * 暂时注掉
      * shiro用的cacheManager
      * @see RedisCacheManager
-     */
+     *//*
+
 //    @Bean
 //    public CacheManager cacheManager(RedisTemplate redisTemplate) {
 //        //redis连接
@@ -66,3 +71,4 @@ public class RedisConfig {
         return jackson2JsonRedisSerializer;
     }
 }
+*/

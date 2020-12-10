@@ -3,7 +3,6 @@ package com.ac.leader.controller.leader;
 import com.ac.common.Result;
 import com.ac.leader.controller.base.BaseController;
 import com.ac.leader.entity.Leader;
-import com.ac.leader.model.dto.LeaderDTO;
 import com.ac.leader.service.LeaderService;
 import com.ac.shiro.entity.SysUser;
 import io.swagger.annotations.Api;
@@ -12,10 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author anchao
@@ -45,7 +42,7 @@ public class LeaderController extends BaseController {
         System.out.println(leader);
     }
 
-    @GetMapping("list")
+/*    @GetMapping("list")
     public Result<Object> list(LeaderDTO leaderVo) {
         Mono<List<Leader>> listMono = Mono.fromSupplier(() -> leaderService.list(leaderVo));
         Result<Object> result = new Result<>();
@@ -53,5 +50,5 @@ public class LeaderController extends BaseController {
             result.setData(s);
         });
         return result;
-    }
+    }*/
 }
