@@ -1,4 +1,4 @@
-package com.ac.datastructure.mooc;
+package com.ac.datastructure.mooc.array;
 
 /** java中的 数组
  * @author anchao

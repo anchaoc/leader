@@ -1,4 +1,4 @@
-package com.ac.datastructure.mooc;
+package com.ac.datastructure.mooc.array;
 
 /**
  * 自定义数组
@@ -103,7 +103,7 @@ public class AcArray<E> {
             data[i - 1] = data[i];
         size--;
         data[size] = null;//置空引用
-        //缩小容量
+        //缩小容量 Lazy
         if(size == data.length /4  &&  data.length /2 !=0 )
             this.resize(data.length/2);
         return ret;
