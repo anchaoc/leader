@@ -26,17 +26,16 @@ public class RecursionTest {
         cityArrayList.add(beijing);
         cityArrayList.add(haidian);
         cityArrayList.add(xisanqi);
-        Map<String, Object> tree = findTree(cityArrayList);
-        System.out.println(tree);
+        List<City> cityList = findTree(cityArrayList);
+        System.out.println(cityList);
     }
 
-    public static Map<String,Object> findTree(List<City> cityList){
-        Map<String,Object> data = new HashMap<String,Object>();
+    public static List<City> findTree(List<City> cityList) {
         try {//查询所有菜单
             //根节点
             List<City> rootMenu = new ArrayList<City>();
             for (City city : cityList) {
-                if(city.getPid().equals(0)){//父节点是0的，为根节点。
+                if (city.getPid().equals(0)) {//父节点是0的，为根节点。
                     rootMenu.add(city);
                 }
             }
@@ -44,45 +43,32 @@ public class RecursionTest {
             for (City nav : rootMenu) {
                 /* 获取根节点下的所有子节点 使用getChild方法*/
                 List<City> childList = getChild(nav.getId(), cityList);
-                nav.setChildCity(childList);//给根节点设置子节点
+                //给根节点设置子节点
+                nav.setChildCity(childList);
             }
-            /**
-             * 输出构建好的菜单数据。
-             *
-             */
-            data.put("success", "true");
-            data.put("list", rootMenu);
-            return data;
+            return rootMenu;
         } catch (Exception e) {
-            data.put("success", "false");
-            data.put("list", new ArrayList());
-            return data;
+            return new ArrayList<>();
         }
     }
 
     /**
      * 获取子节点
-     * @param id 父节点id
+     * @param id      父节点id
      * @param allMenu 所有菜单列表
      * @return 每个根节点下，所有子菜单列表
      */
-    public static List<City> getChild(Integer id,List<City> allMenu){
+    public static List<City> getChild(Integer id, List<City> allMenu) {
         //子菜单
         List<City> childList = new ArrayList<City>();
         for (City nav : allMenu) {
-            // 遍历所有节点，将所有菜单的父id与传过来的根节点的id比较
-            //相等说明：为该根节点的子节点。
-            if(nav.getPid().equals(id)){
+            if (nav.getPid().equals(id)) {
                 childList.add(nav);
             }
         }
-        //递归
         for (City nav : childList) {
+            //递归
             nav.setChildCity(getChild(nav.getId(), allMenu));
-        }
-        //如果节点下没有子节点，返回一个空List（递归退出）
-        if(childList.size() == 0){
-            return new ArrayList<City>();
         }
         return childList;
     }
