@@ -15,4 +15,5 @@ public interface LeaderService extends IService<Leader> {
     List<Leader> list(LeaderDTO leadervo);
 
     Leader ins(Leader leaderNew);
+
 }

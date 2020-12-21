@@ -17,8 +17,7 @@ spring:
 
 
 
-  thymeleaf:
-    prefix: classpath:/templates/
+
 
 
 
