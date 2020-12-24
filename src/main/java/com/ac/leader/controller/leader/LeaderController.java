@@ -6,7 +6,6 @@ import com.ac.leader.entity.Leader;
 import com.ac.leader.service.LeaderService;
 import com.hello.service.HelloService;
 import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,15 +52,15 @@ public class LeaderController extends BaseController {
 //        return null;
 //    }
 
-    @PostMapping("save")
-    public void save() {
-        Leader leaderNew = new Leader();
-        leaderNew.setLeaderName("xiaoming");
-        leaderNew.setLeaderAddress("北京昌平");
-        leaderNew.setLeaderAge(24);
-        Leader leader = leaderService.ins(leaderNew);
-        System.out.println(leader);
-    }
+//    @PostMapping("save")
+//    public void save() {
+//        Leader leaderNew = new Leader();
+//        leaderNew.setLeaderName("xiaoming");
+//        leaderNew.setLeaderAddress("北京昌平");
+//        leaderNew.setLeaderAge(24);
+//        Leader leader = leaderService.ins(leaderNew);
+//        System.out.println(leader);
+//    }
 
 
 /*    @GetMapping("list")
