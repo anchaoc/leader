@@ -273,7 +273,20 @@ public class StreamTest {
         });
     }
 
+    @Test
+    public void CollectorsAndThanTest(){
+        BigDecimal price = new BigDecimal("12000.1314");
+        BigDecimal price1 = new BigDecimal("14000.1314");
+        User user1 = new User(1L, "a", price);
+        User user2 = new User(3L, "b", price);
+        User user3 = new User(4L, "c", price);
+        User user4 = new User(2L, "d", price1);
+        List<User> lists = Arrays.asList(user1,user1, user2,user3,user4);
+        ArrayList<User> collect = lists.stream()
+                .collect(Collectors.collectingAndThen(Collectors.toCollection(()->new TreeSet<User>(Comparator.comparing(User::getId))), ArrayList::new));
+        System.out.println(collect);
 
+    }
 
 
 }
